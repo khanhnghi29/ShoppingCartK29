@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ShoppingCart.ViewModels;
 
 namespace ShoppingCart.Data
 {
@@ -539,5 +540,7 @@ namespace ShoppingCart.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<ShoppingCart.ViewModels.CreateHangHoaViewModel>? CreateHangHoaViewModel { get; set; }
     }
 }

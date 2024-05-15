@@ -251,3 +251,6 @@ C:\ASPCoreMVC\ShoppingCart\ShoppingCart\bin\Debug\net6.0\Microsoft.DotNet.Platfo
 C:\ASPCoreMVC\ShoppingCart\ShoppingCart\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\ASPCoreMVC\ShoppingCart\ShoppingCart\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\ASPCoreMVC\ShoppingCart\ShoppingCart\obj\Debug\net6.0\scopedcss\projectbundle\ShoppingCart.bundle.scp.css
+C:\ASPCoreMVC\ShoppingCart\ShoppingCart\bin\Debug\net6.0\X.PagedList.dll
+C:\ASPCoreMVC\ShoppingCart\ShoppingCart\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+C:\ASPCoreMVC\ShoppingCart\ShoppingCart\obj\Debug\net6.0\ShoppingCart.MvcApplicationPartsAssemblyInfo.cs

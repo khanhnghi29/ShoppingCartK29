@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "R99vgB4Q88aB80ahGh3Gr7OalTzSCadYjc7t+yl2QKgPrwuFyDtzbAvl5u+w1D68hj9cO/o6C/eyhhq6BtGm2g==",
+  "dgSpecHash": "PBhw1bd7AR4iib4Zma2tARRZxbNOABRqpZqVg5jeEjBFKZkxFDYeDNerEf7KcLG88+G3nZ/8jPzo4YxRsBvd1A==",
   "success": true,
   "projectFilePath": "C:\\ASPCoreMVC\\ShoppingCart\\ShoppingCart\\ShoppingCart.csproj",
   "expectedPackageFiles": [
@@ -229,7 +229,9 @@
     "C:\\Users\\Khanh Nghi\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Khanh Nghi\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Khanh Nghi\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Khanh Nghi\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Khanh Nghi\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Khanh Nghi\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
+    "C:\\Users\\Khanh Nghi\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
   ],
   "logs": []
 }

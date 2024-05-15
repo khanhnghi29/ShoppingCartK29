@@ -1,6 +1,7 @@
-﻿@model IEnumerable<ShoppingCart.ViewModels.HangHoaViewModel>
-
-<h3> Có <b>@Model.Count()</b> sản phẩm.</h3>
+﻿@* @model IEnumerable<ShoppingCart.ViewModels.HangHoaViewModel> *@
+@model X.PagedList.IPagedList<ShoppingCart.ViewModels.HangHoaViewModel>
+@using X.PagedList.Mvc.Core;
+<h3> Có <b>@Model.TotalItemCount</b> sản phẩm.</h3>
 @foreach (var item in Model)
 {
 	<div class="col-md-6 col-lg-6 col-xl-4">
@@ -24,3 +25,8 @@
 		</div>
 	</div>
 }
+
+<div class="pagination d-flex justify-content-center mt-5">
+		@Html.PagedListPager(Model, page => Url.Action("Index", new {loai = ViewBag.loai, page = page }))
+</div>
+

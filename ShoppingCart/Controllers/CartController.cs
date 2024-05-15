@@ -45,7 +45,7 @@ namespace ShoppingCart.Controllers
         {
             var gioHang = Cart();
             var item = gioHang.SingleOrDefault(h => h.MaHh == id);
-            //Check xem trong giỏ hàng đã có mã sàn phẩm này hay chưa, nếu null thì get từ database ra
+            //Check xem trong giỏ hàng đã có mã sàn phẩm này hay chưa, nếu null thì get từ session ra
             if (item == null)
             {
 

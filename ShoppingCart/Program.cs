@@ -62,10 +62,13 @@ namespace ShoppingCart
             app.UseAuthentication();
             app.UseSession();
             app.UseAuthorization();
-
-            app.MapControllerRoute(
+			app.MapControllerRoute(
+	        name: "MyArea",
+	        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+			app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=HangHoa}/{action=Index}/{id?}");
+            
 
             app.Run();
         }

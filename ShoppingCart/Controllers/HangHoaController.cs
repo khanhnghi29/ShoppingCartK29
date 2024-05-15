@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ShoppingCart.Data;
 using ShoppingCart.ViewModels;
+using X.PagedList;
 
 namespace ShoppingCart.Controllers
 {
@@ -18,9 +20,9 @@ namespace ShoppingCart.Controllers
         /// </summary>
         /// <param name="loai"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Index(int? loai) // int? co the co hoac khong
+        public async Task<IActionResult> Index(int? loai, int? page) // int? co the co hoac khong
         {
-            var hangHoas = _context.HangHoas.AsQueryable(); // GetttAll
+            /*var hangHoas = _context.HangHoas.AsQueryable(); // GetttAll
 
             if (loai.HasValue)// Nếu loại duocj truyen vaof thi lay theo loai
             {
@@ -36,6 +38,27 @@ namespace ShoppingCart.Controllers
                 MoTaNgan = h.MoTaDonVi ?? "",
                 TenLoai = h.MaLoaiNavigation.TenLoai
             }).ToListAsync();
+            return View(result);*/
+            var hangHoas = _context.HangHoas.AsQueryable(); // Lấy tất cả
+
+            if (loai.HasValue) // Nếu loại được truyền vào thì lấy theo loại
+            {
+                hangHoas = hangHoas.Where(h => h.MaLoai == loai.Value);
+            }
+
+            // Kết quả trả về theo kiểu HangHoaViewModel == DTO trong Web API
+            var pageSize = 9; // Số sản phẩm trên mỗi trang
+            var pageNumber = page ?? 1; // Trang hiện tại (nếu không có thì mặc định là 1)
+            var result = await hangHoas.Select(h => new HangHoaViewModel
+            {
+                MaHh = h.MaHh,
+                TenHH = h.TenHh,
+                DonGia = h.DonGia ?? 0, // Có thể = 0
+                Hinh = h.Hinh ?? "", // Có thể có hoặc rỗng
+                MoTaNgan = h.MoTaDonVi ?? "",
+                TenLoai = h.MaLoaiNavigation.TenLoai
+            }).ToPagedListAsync(pageNumber, pageSize);
+            ViewBag.loai = loai;
             return View(result);
         }
 
@@ -44,26 +67,30 @@ namespace ShoppingCart.Controllers
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Search(string? query)
+        public async Task<IActionResult> Search(string? query, int? page)
         {
-            var hangHoas = _context.HangHoas.AsQueryable();
+			var hangHoas = _context.HangHoas.AsQueryable();
 
-            if (query != null)
-            {
-                hangHoas = hangHoas.Where(p => p.TenHh.Contains(query));// Chua string 
-            }
+			if (!string.IsNullOrEmpty(query))
+			{
+				hangHoas = hangHoas.Where(p => p.TenHh.Contains(query)); // Lọc theo tên sản phẩm chứa từ khóa
+			}
 
-            var result = await hangHoas.Select(p => new HangHoaViewModel
-            {
-                MaHh = p.MaHh,
-                TenHH = p.TenHh,
-                DonGia = p.DonGia ?? 0,
-                Hinh = p.Hinh ?? "",
-                MoTaNgan = p.MoTaDonVi ?? "",
-                TenLoai = p.MaLoaiNavigation.TenLoai
-            }).ToListAsync();
-            return View(result);
-        }
+			// Kết quả trả về theo kiểu HangHoaViewModel == DTO trong Web API
+			var pageSize = 9; // Số sản phẩm trên mỗi trang
+			var pageNumber = page ?? 1; // Trang hiện tại (nếu không có thì mặc định là 1)
+			var result = await hangHoas.Select(p => new HangHoaViewModel
+			{
+				MaHh = p.MaHh,
+				TenHH = p.TenHh,
+				DonGia = p.DonGia ?? 0,
+				Hinh = p.Hinh ?? "",
+				MoTaNgan = p.MoTaDonVi ?? "",
+				TenLoai = p.MaLoaiNavigation.TenLoai
+			}).ToPagedListAsync(pageNumber, pageSize);
+
+			return View(result);
+		}
 
 
         /// <summary>
